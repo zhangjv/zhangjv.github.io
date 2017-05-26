@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="null" class="js-avatar">
+			<img src="http://wx2.sinaimg.cn/mw690/a1702bafly1ffywhbwe0gj20hs0hsmx9.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">zhangjv</a></h1>
@@ -59,8 +59,6 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -82,13 +80,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="weibo" target="_blank" href="http://weibo.com/2708482991" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="mail" target="_blank" href="mailto:zhangjvsunshineeee@gmail.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -106,7 +100,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="null" class="js-avatar">
+				<img src="http://wx2.sinaimg.cn/mw690/a1702bafly1ffywhbwe0gj20hs0hsmx9.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">zhangjv</h1>
@@ -118,20 +112,14 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="weibo" target="_blank" href="http://weibo.com/2708482991" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="mail" target="_blank" href="mailto:zhangjvsunshineeee@gmail.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -140,9 +128,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -159,60 +145,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-debugging-experience" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总结一下代码调试技巧"><a href="#总结一下代码调试技巧" class="headerlink" title="总结一下代码调试技巧"></a>总结一下代码调试技巧</h1><blockquote>
-<p>持续更新</p>
-</blockquote>
-<ul>
-<li>最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。<br>在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">INSERT INTO app (</div><div class="line">    name,</div><div class="line">    package_name,</div><div class="line">    app_id,</div><div class="line">    desc,</div><div class="line">    update_at,</div><div class="line">    update_by</div><div class="line">) VALUES  (</div><div class="line">    #&#123;<span class="ruby">name&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">packageName&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">appId&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">desc&#125;</span>,</div><div class="line">    now(),</div><div class="line">    #&#123;<span class="ruby">updateBy&#125;</span></div><div class="line">)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>mybatis的sql，通过注释发现是desc这个字段的位置有问题，google得知desc果然是mybatis的关键字，<br>改成description结束。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/debugging-experience/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-foo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-event-loop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/26/foo/">js的事件机制</a>
+      <a class="article-title" href="/2016/09/26/event-loop/">js的事件机制</a>
     </h1>
   
 
         
-        <a href="/2016/05/26/foo/" class="archive-article-date">
-  	<time datetime="2016-05-26T09:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-26</time>
+        <a href="/2016/09/26/event-loop/" class="archive-article-date">
+  	<time datetime="2016-09-26T11:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-26</time>
 </a>
         
       </header>
@@ -257,7 +203,73 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/26/foo/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/09/26/event-loop/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-debugging-experience" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/26/debugging-experience/">debugging-experience</a>
+    </h1>
+  
+
+        
+        <a href="/2016/05/26/debugging-experience/" class="archive-article-date">
+  	<time datetime="2016-05-26T09:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总结一下代码调试技巧"><a href="#总结一下代码调试技巧" class="headerlink" title="总结一下代码调试技巧"></a>总结一下代码调试技巧</h1><blockquote>
+<p>持续更新</p>
+</blockquote>
+<ul>
+<li>最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。<br>在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">INSERT INTO app (</div><div class="line">    name,</div><div class="line">    package_name,</div><div class="line">    app_id,</div><div class="line">    desc,</div><div class="line">    update_at,</div><div class="line">    update_by</div><div class="line">) VALUES  (</div><div class="line">    #&#123;<span class="ruby">name&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">packageName&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">appId&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">desc&#125;</span>,</div><div class="line">    now(),</div><div class="line">    #&#123;<span class="ruby">updateBy&#125;</span></div><div class="line">)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>mybatis的sql，通过注释发现是desc这个字段的位置有问题，google得知desc果然是mybatis的关键字，<br>改成description结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">debug</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/05/26/debugging-experience/">展开全文 >></a>
         </p>
       
 
@@ -370,6 +382,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">debug</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -427,22 +443,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
             </li>
           
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
         </ul>
   		
     	</section>
@@ -451,7 +451,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">我是谁&lt;br&gt;从哪来&lt;br&gt;到哪去</div>
   	  	
     	</section>
     

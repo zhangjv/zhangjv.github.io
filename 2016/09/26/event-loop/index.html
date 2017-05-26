@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhangjv.github.io">
-  <title>Archives: 2016/5 | zhangjv的博客</title>
+  <title>js的事件机制 | zhangjv的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="foo">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhangjv的博客">
-<meta property="og:url" content="//zhangjv.github.io/archives/2016/05/index.html">
+  <meta name="description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的事件机制">
+<meta property="og:url" content="//zhangjv.github.io/2016/09/26/event-loop/index.html">
 <meta property="og:site_name" content="zhangjv的博客">
-<meta property="og:description" content="foo">
+<meta property="og:description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
+<meta property="og:updated_time" content="2017-05-26T09:52:21.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhangjv的博客">
-<meta name="twitter:description" content="foo">
+<meta name="twitter:title" content="js的事件机制">
+<meta name="twitter:description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
   
     <link rel="alternative" href="/atom.xml" title="zhangjv的博客" type="application/atom+xml">
   
@@ -143,60 +144,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-event-loop" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/26/debugging-experience/" class="archive-article-date">
-  	<time datetime="2016-05-26T09:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/26/debugging-experience/">debugging-experience</a>
+    <h1 class="article-title" itemprop="name">
+      js的事件机制
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2016/09/26/event-loop/" class="archive-article-date">
+  	<time datetime="2016-09-26T11:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>js的事件机制</p>
+</blockquote>
+<ul>
+<li><p>通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？</p>
+</li>
+<li><p>实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。</p>
+</li>
+</ul>
+<p>异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一个通知机制来告诉主线程异步完成可以执行回调了，这个通知机制的实现就是任务队列和事件循环。主线程需要做的事就是每次从任务队列取出所有，是所有，要执行的任务，按照顺序执行。取出的任务全部执行完毕后再去任务队列中重新取（事件循环）。如果队列中没有任务，主线程就处于停止状态，等待队列中出现新任务。而其他实现观察者的线程负责向队列中push任务。</p>
+<p>关于任务队列，有解释说是消息队列，我认为任务这个词更合适一些。</p>
+<ul>
+<li>所以当前执行的代码中加入的异步任务，即使是setTimeout 0，这个回调函数也要等到下个事件循环的时候执行了。</li>
+</ul>
+<p>ps：vue的dom更新是异步的，会在下一次事件循环的时候执行（ vm.$nextTick(callback)）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">debug</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2016/05/26/debugging-experience/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">debugging-experience</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -219,8 +252,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

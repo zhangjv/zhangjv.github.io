@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhangjv.github.io">
-  <title>Archives: 2016/5 | zhangjv的博客</title>
+  <title>debugging-experience | zhangjv的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="foo">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhangjv的博客">
-<meta property="og:url" content="//zhangjv.github.io/archives/2016/05/index.html">
+  <meta name="description" content="总结一下代码调试技巧 持续更新   最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。123456789101112131415INSERT INTO app (    name,    package_name,    a">
+<meta name="keywords" content="debug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="debugging-experience">
+<meta property="og:url" content="//zhangjv.github.io/2016/05/26/debugging-experience/index.html">
 <meta property="og:site_name" content="zhangjv的博客">
-<meta property="og:description" content="foo">
+<meta property="og:description" content="总结一下代码调试技巧 持续更新   最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。123456789101112131415INSERT INTO app (    name,    package_name,    a">
+<meta property="og:updated_time" content="2017-05-26T10:03:06.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhangjv的博客">
-<meta name="twitter:description" content="foo">
+<meta name="twitter:title" content="debugging-experience">
+<meta name="twitter:description" content="总结一下代码调试技巧 持续更新   最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。123456789101112131415INSERT INTO app (    name,    package_name,    a">
   
     <link rel="alternative" href="/atom.xml" title="zhangjv的博客" type="application/atom+xml">
   
@@ -143,36 +144,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-debugging-experience" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/26/debugging-experience/" class="archive-article-date">
-  	<time datetime="2016-05-26T09:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/26/debugging-experience/">debugging-experience</a>
+    <h1 class="article-title" itemprop="name">
+      debugging-experience
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2016/05/26/debugging-experience/" class="archive-article-date">
+  	<time datetime="2016-05-26T09:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总结一下代码调试技巧"><a href="#总结一下代码调试技巧" class="headerlink" title="总结一下代码调试技巧"></a>总结一下代码调试技巧</h1><blockquote>
+<p>持续更新</p>
+</blockquote>
+<ul>
+<li>最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。<br>在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">INSERT INTO app (</div><div class="line">    name,</div><div class="line">    package_name,</div><div class="line">    app_id,</div><div class="line">    desc,</div><div class="line">    update_at,</div><div class="line">    update_by</div><div class="line">) VALUES  (</div><div class="line">    #&#123;<span class="ruby">name&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">packageName&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">appId&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">desc&#125;</span>,</div><div class="line">    now(),</div><div class="line">    #&#123;<span class="ruby">updateBy&#125;</span></div><div class="line">)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>mybatis的sql，通过注释发现是desc这个字段的位置有问题，google得知desc果然是mybatis的关键字，<br>改成description结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -184,19 +191,42 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/09/26/event-loop/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js的事件机制
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -219,8 +249,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
