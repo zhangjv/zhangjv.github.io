@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhangjv.github.io">
-  <title>zhangjv的博客</title>
+  <title>js的事件机制 | zhangjv的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="foo">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhangjv的博客">
-<meta property="og:url" content="//zhangjv.github.io/index.html">
+  <meta name="description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的事件机制">
+<meta property="og:url" content="//zhangjv.github.io/2016/05/26/foo/index.html">
 <meta property="og:site_name" content="zhangjv的博客">
-<meta property="og:description" content="foo">
+<meta property="og:description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
+<meta property="og:updated_time" content="2017-05-26T09:07:43.170Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhangjv的博客">
-<meta name="twitter:description" content="foo">
+<meta name="twitter:title" content="js的事件机制">
+<meta name="twitter:description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
   
     <link rel="alternative" href="/atom.xml" title="zhangjv的博客" type="application/atom+xml">
   
@@ -157,56 +158,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-debugging-experience" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总结一下代码调试技巧"><a href="#总结一下代码调试技巧" class="headerlink" title="总结一下代码调试技巧"></a>总结一下代码调试技巧</h1><blockquote>
-<p>持续更新</p>
-</blockquote>
-<ul>
-<li>最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。<br>在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">INSERT INTO app (</div><div class="line">    name,</div><div class="line">    package_name,</div><div class="line">    app_id,</div><div class="line">    desc,</div><div class="line">    update_at,</div><div class="line">    update_by</div><div class="line">) VALUES  (</div><div class="line">    #&#123;<span class="ruby">name&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">packageName&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">appId&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">desc&#125;</span>,</div><div class="line">    now(),</div><div class="line">    #&#123;<span class="ruby">updateBy&#125;</span></div><div class="line">)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>mybatis的sql，通过注释发现是desc这个字段的位置有问题，google得知desc果然是mybatis的关键字，<br>改成description结束。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/debugging-experience/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-foo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-foo" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/26/foo/">js的事件机制</a>
+    <h1 class="article-title" itemprop="name">
+      js的事件机制
     </h1>
   
 
@@ -238,6 +197,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -256,22 +236,89 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/26/foo/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhangjv.github.io/2016/05/26/foo/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/25/debugging-experience/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 
 
 
   
+  
+  
+
+  
+
   
 
 
@@ -294,8 +341,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
