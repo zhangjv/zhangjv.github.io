@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhangjv.github.io">
-  <title>js的事件机制 | zhangjv的博客</title>
+  <title>Environment-building | zhangjv的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
-<meta name="keywords" content="javascript">
+  <meta name="description" content="服务端开发环境搭建 快速搭建lnmp和svn   昨天在家帮同学部署网站，他们找人做了一个php的小网站（ecshop嗯挺老的东西了），帮着选了阿里云主机，然后部署。  懒得逐个配置安装（当然也很害怕出错，毕竟不专业），上网安装脚本找到了这个lnmp.org,就用了。bbs有提到阿里云的内网下载地址，替换下载地址后下载很快，然后加上自动编译安装大概花了半小时左右完成。  下一步就是把项目代码上传到">
+<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js的事件机制">
-<meta property="og:url" content="//zhangjv.github.io/2016/09/26/event-loop/index.html">
+<meta property="og:title" content="Environment-building">
+<meta property="og:url" content="//zhangjv.github.io/2017/05/31/Environment-building/index.html">
 <meta property="og:site_name" content="zhangjv的博客">
-<meta property="og:description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
-<meta property="og:updated_time" content="2017-05-26T09:52:21.328Z">
+<meta property="og:description" content="服务端开发环境搭建 快速搭建lnmp和svn   昨天在家帮同学部署网站，他们找人做了一个php的小网站（ecshop嗯挺老的东西了），帮着选了阿里云主机，然后部署。  懒得逐个配置安装（当然也很害怕出错，毕竟不专业），上网安装脚本找到了这个lnmp.org,就用了。bbs有提到阿里云的内网下载地址，替换下载地址后下载很快，然后加上自动编译安装大概花了半小时左右完成。  下一步就是把项目代码上传到">
+<meta property="og:updated_time" content="2017-05-31T03:44:53.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js的事件机制">
-<meta name="twitter:description" content="js的事件机制   通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？  实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。   异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一">
+<meta name="twitter:title" content="Environment-building">
+<meta name="twitter:description" content="服务端开发环境搭建 快速搭建lnmp和svn   昨天在家帮同学部署网站，他们找人做了一个php的小网站（ecshop嗯挺老的东西了），帮着选了阿里云主机，然后部署。  懒得逐个配置安装（当然也很害怕出错，毕竟不专业），上网安装脚本找到了这个lnmp.org,就用了。bbs有提到阿里云的内网下载地址，替换下载地址后下载很快，然后加上自动编译安装大概花了半小时左右完成。  下一步就是把项目代码上传到">
   
     <link rel="alternative" href="/atom.xml" title="zhangjv的博客" type="application/atom+xml">
   
@@ -144,41 +144,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-event-loop" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Environment-building" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js的事件机制
+      Environment-building
     </h1>
   
 
         
-        <a href="/2016/09/26/event-loop/" class="archive-article-date">
-  	<time datetime="2016-09-26T11:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-26</time>
+        <a href="/2017/05/31/Environment-building/" class="archive-article-date">
+  	<time datetime="2017-05-31T03:10:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>js的事件机制</p>
+        <h1 id="服务端开发环境搭建"><a href="#服务端开发环境搭建" class="headerlink" title="服务端开发环境搭建"></a>服务端开发环境搭建</h1><blockquote>
+<p>快速搭建lnmp和svn</p>
 </blockquote>
 <ul>
-<li><p>通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？</p>
+<li><p>昨天在家帮同学部署网站，他们找人做了一个php的小网站（ecshop嗯挺老的东西了），帮着选了阿里云主机，<br>然后部署。</p>
 </li>
-<li><p>实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。</p>
+<li><p>懒得逐个配置安装（当然也很害怕出错，毕竟不专业），上网安装脚本找到了这个<a href="https://lnmp.org/" target="_blank" rel="external">lnmp.org</a>,就用了。bbs有提到阿里云的内网下载地址，<br>替换下载地址后下载很快，然后加上自动编译安装大概花了半小时左右完成。</p>
+</li>
+<li><p>下一步就是把项目代码上传到服务器，本来打算ftp上传，又觉得这种方式不利于代码管理和规范，决定在服务器上搭一个svn，然后把本地的代码<br>通过svn提交的服务器上去，使用了大概<a href="http://www.jianshu.com/p/4e3dd253a209" target="_blank" rel="external">这个教程</a>,具体哪个记不清楚了，<br>其实很多教程都不是很全面清晰，总之就是yum安装svn之后，创建仓库所在目录，用svn命令生成仓库，然后在仓库目录里面编辑配置文件来分配帐号<br>最后用svn co命令将代码复制到www目录下，改nginx配置文件，将项目目录指定到www下的对应目录，完成。</p>
+</li>
+<li><p>还有的教程提到可以创建一个脚本，当代码提交之后自动部署到对应目录，然而没看明白就没使用。</p>
+</li>
+<li><p>本地navicat连接数据库，导入数据。</p>
+</li>
+<li><p>最后关于dns解析，网上不少推荐<a href="https://www.dnspod.cn/" target="_blank" rel="external">dnspod</a>,在dnspod配置完后需要到注册域名的网站再去配置，dnspod网站有教程说明。</p>
+</li>
+<li><p>关于防火墙和开端口，按理说应该是iptables里面配置，但是我看服务器的配置文件有点不一样，而在阿里云的控制台上的安全策略可以配置，就在控制台配置了80、443以及svn的3690，<br>出于安全考虑没有直接开放mysql的3306，程序本身localhost可以访问，而开发机可以通过在navicat上ssh连接。</p>
 </li>
 </ul>
-<p>异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一个通知机制来告诉主线程异步完成可以执行回调了，这个通知机制的实现就是任务队列和事件循环。主线程需要做的事就是每次从任务队列取出所有，是所有，要执行的任务，按照顺序执行。取出的任务全部执行完毕后再去任务队列中重新取（事件循环）。如果队列中没有任务，主线程就处于停止状态，等待队列中出现新任务。而其他实现观察者的线程负责向队列中push任务。</p>
-<p>关于任务队列，有解释说是消息队列，我认为任务这个词更合适一些。</p>
-<ul>
-<li>所以当前执行的代码中加入的异步任务，即使是setTimeout 0，这个回调函数也要等到下个事件循环的时候执行了。</li>
-</ul>
-<p>ps：vue的dom更新是异步的，会在下一次事件循环的时候执行（ vm.$nextTick(callback)）</p>
 
       
 
@@ -187,17 +191,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -211,18 +204,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/31/Environment-building/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Environment-building
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/05/26/debugging-experience/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">debugging-experience</div>
+    <a href="/2016/09/26/event-loop/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js的事件机制</div>
       <i class="icon-circle-right"></i>
     </a>
   
