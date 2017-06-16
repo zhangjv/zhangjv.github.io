@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhangjv.github.io">
-  <title>zhangjv的博客</title>
+  <title>Archives: 2017/6 | zhangjv的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="foo">
 <meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zhangjv的博客">
-<meta property="og:url" content="//zhangjv.github.io/index.html">
+<meta property="og:url" content="//zhangjv.github.io/archives/2017/06/index.html">
 <meta property="og:site_name" content="zhangjv的博客">
 <meta property="og:description" content="foo">
 <meta name="twitter:card" content="summary">
@@ -145,44 +145,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-es6-study" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/16/es6-study/">es6-study</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/16/es6-study/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/16/es6-study/" class="archive-article-date">
   	<time datetime="2017-06-16T10:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总结ES6语法"><a href="#总结ES6语法" class="headerlink" title="总结ES6语法"></a>总结ES6语法</h1><p>看的高程书作者写的介绍ES6的书,以下是我的总结，应该全是要点</p>
-<blockquote>
-<p>1 块级绑定（let与const）</p>
-</blockquote>
-<p>现有问题：现有的var定义变量方式存在的问题：<br>变量提升，定义的变量都会被提升到函数内部的顶部（或者window全局变量的顶部）；<br>没有块级作用域，如for循环和if条件代码块；<br>没有静态变量；<br>容易覆盖全局变量（window下）；</p>
-<p>解决方案：<br>let和const带来了块级作用域、没有变量提升、全局作用域下只会屏蔽已有的全局变量，不会覆盖、禁止重复声明（会报错）、copy循环中的引用（取代闭包）；<br>副作用：暂时性死区（temporal dead zone），在一个代码块中如果typeof先于let或者const定义，会报错</p>
-<p>最佳实践：<br>let完全取代var，能用const的地方全部使用const（预期不变的变量值）</p>
-<blockquote>
-<p>2 方法</p>
-</blockquote>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/06/16/es6-study/">es6-study</a>
+    </h1>
+  
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,238 +184,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/16/es6-study/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
   
-    <article id="post-Environment-building" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/31/Environment-building/">Environment-building</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/31/Environment-building/" class="archive-article-date">
-  	<time datetime="2017-05-31T03:10:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="服务端开发环境搭建"><a href="#服务端开发环境搭建" class="headerlink" title="服务端开发环境搭建"></a>服务端开发环境搭建</h1><blockquote>
-<p>快速搭建lnmp和svn</p>
-</blockquote>
-<ul>
-<li><p>昨天在家帮同学部署网站，他们找人做了一个php的小网站（ecshop嗯挺老的东西了），帮着选了阿里云主机，<br>然后部署。</p>
-</li>
-<li><p>懒得逐个配置安装（当然也很害怕出错，毕竟不专业），上网安装脚本找到了这个<a href="https://lnmp.org/" target="_blank" rel="external">lnmp.org</a>,就用了。bbs有提到阿里云的内网下载地址，<br>替换下载地址后下载很快，然后加上自动编译安装大概花了半小时左右完成。</p>
-</li>
-<li><p>下一步就是把项目代码上传到服务器，本来打算ftp上传，又觉得这种方式不利于代码管理和规范，决定在服务器上搭一个svn，然后把本地的代码<br>通过svn提交的服务器上去，使用了大概<a href="http://www.jianshu.com/p/4e3dd253a209" target="_blank" rel="external">这个教程</a>,具体哪个记不清楚了，<br>其实很多教程都不是很全面清晰，总之就是yum安装svn之后，创建仓库所在目录，用svn命令生成仓库，然后在仓库目录里面编辑配置文件来分配帐号<br>最后用svn co命令将代码复制到www目录下，改nginx配置文件，将项目目录指定到www下的对应目录，完成。</p>
-</li>
-<li><p>设置代码提交后自动部署 ,用到的是svn的钩子，svn仓库下有一个hooks目录，里面是各种钩子的模板，用到的是post-commit这个，vim新建一个post-commit文件，内容大概如下：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">REPOS=<span class="string">"$1"</span></div><div class="line">REV=<span class="string">"$2"</span></div><div class="line">export LANG=zh_CN.UTF<span class="number">-8</span></div><div class="line">echo <span class="string">"Code Deployed at `date "</span>+%Y-%m-%d %<span class="string">H:</span>%M<span class="string">"`"</span> &gt;&gt; <span class="regexp">/home/</span>svn<span class="regexp">/dl_test/</span>hooks/deploy_log</div><div class="line"><span class="regexp">/usr/</span>local<span class="regexp">/subversion/</span>bin<span class="regexp">/svn update --username ****** --password ****** /</span>home<span class="regexp">/www/</span>data/dl_test</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>保存，然后<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x <span class="built_in">post</span>-commit</div></pre></td></tr></table></figure></p>
-<p>即可</p>
-<ul>
-<li><p>本地navicat连接数据库，导入数据。</p>
-</li>
-<li><p>最后关于dns解析，网上不少推荐<a href="https://www.dnspod.cn/" target="_blank" rel="external">dnspod</a>,在dnspod配置完后需要到注册域名的网站再去配置，dnspod网站有教程说明。</p>
-</li>
-<li><p>关于防火墙和开端口，按理说应该是iptables里面配置，但是我看服务器的配置文件有点不一样，而在阿里云的控制台上的安全策略可以配置，就在控制台配置了80、443以及svn的3690，<br>出于安全考虑没有直接开放mysql的3306，程序本身localhost可以访问，而开发机可以通过在navicat上ssh连接。</p>
-</li>
-<li><p>无脑设置项目目录文件权限：cd到项目目录，chmod -R 777 *</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/31/Environment-building/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-event-loop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/26/event-loop/">js的事件机制</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/26/event-loop/" class="archive-article-date">
-  	<time datetime="2016-09-26T11:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>js的事件机制</p>
-</blockquote>
-<ul>
-<li><p>通常说js是单线程执行的，这种说法其实会引起疑惑，至少让我疑惑了，既然是单线程，那么事件机制的主体和观察者角色都怎么来解释？</p>
-</li>
-<li><p>实际上，所谓单线程是指执行js程序代码的线程只有一个，可以称作主线程。而其他像ajax的请求、dom事件、定时器事件的观察者实现都是其他的线程来完成的，没有包含的主线程之内。</p>
-</li>
-</ul>
-<p>异步操作完成之后要通知主线程，这样才能知道异步操作完成了。这里就需要一个通知机制来告诉主线程异步完成可以执行回调了，这个通知机制的实现就是任务队列和事件循环。主线程需要做的事就是每次从任务队列取出所有，是所有，要执行的任务，按照顺序执行。取出的任务全部执行完毕后再去任务队列中重新取（事件循环）。如果队列中没有任务，主线程就处于停止状态，等待队列中出现新任务。而其他实现观察者的线程负责向队列中push任务。</p>
-<p>关于任务队列，有解释说是消息队列，我认为任务这个词更合适一些。</p>
-<ul>
-<li>所以当前执行的代码中加入的异步任务，即使是setTimeout 0，这个回调函数也要等到下个事件循环的时候执行了。</li>
-</ul>
-<p>ps：vue的dom更新是异步的，会在下一次事件循环的时候执行（ vm.$nextTick(callback)）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/26/event-loop/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-debugging-experience" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/26/debugging-experience/">debugging-experience</a>
-    </h1>
-  
-
-        
-        <a href="/2016/05/26/debugging-experience/" class="archive-article-date">
-  	<time datetime="2016-05-26T09:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总结一下代码调试技巧"><a href="#总结一下代码调试技巧" class="headerlink" title="总结一下代码调试技巧"></a>总结一下代码调试技巧</h1><blockquote>
-<p>持续更新</p>
-</blockquote>
-<ul>
-<li>最近在用java做后台oa的项目，我本身对java不够熟悉，遇到报错尤其是错误信息并不直接的报错，根本看不出原因。<br>在这种凭肉眼看不出错误在哪、报错信息模糊、不能断点调试的情况下，逐段注释和逐行注释来确定错误代码位置就很有效果。<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">INSERT INTO app (</div><div class="line">    name,</div><div class="line">    package_name,</div><div class="line">    app_id,</div><div class="line">    desc,</div><div class="line">    update_at,</div><div class="line">    update_by</div><div class="line">) VALUES  (</div><div class="line">    #&#123;<span class="ruby">name&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">packageName&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">appId&#125;</span>,</div><div class="line">    #&#123;<span class="ruby">desc&#125;</span>,</div><div class="line">    now(),</div><div class="line">    #&#123;<span class="ruby">updateBy&#125;</span></div><div class="line">)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>mybatis的sql，通过注释发现是desc这个字段的位置有问题，google得知desc果然是mybatis的关键字，<br>改成description结束。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">debug</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/26/debugging-experience/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-  
 
 
           </div>
@@ -447,9 +218,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

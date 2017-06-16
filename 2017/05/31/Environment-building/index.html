@@ -15,7 +15,7 @@
 <meta property="og:url" content="//zhangjv.github.io/2017/05/31/Environment-building/index.html">
 <meta property="og:site_name" content="zhangjv的博客">
 <meta property="og:description" content="服务端开发环境搭建 快速搭建lnmp和svn   昨天在家帮同学部署网站，他们找人做了一个php的小网站（ecshop嗯挺老的东西了），帮着选了阿里云主机，然后部署。  懒得逐个配置安装（当然也很害怕出错，毕竟不专业），上网安装脚本找到了这个lnmp.org,就用了。bbs有提到阿里云的内网下载地址，替换下载地址后下载很快，然后加上自动编译安装大概花了半小时左右完成。  下一步就是把项目代码上传到">
-<meta property="og:updated_time" content="2017-05-31T03:44:53.140Z">
+<meta property="og:updated_time" content="2017-06-02T06:11:41.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Environment-building">
 <meta name="twitter:description" content="服务端开发环境搭建 快速搭建lnmp和svn   昨天在家帮同学部署网站，他们找人做了一个php的小网站（ecshop嗯挺老的东西了），帮着选了阿里云主机，然后部署。  懒得逐个配置安装（当然也很害怕出错，毕竟不专业），上网安装脚本找到了这个lnmp.org,就用了。bbs有提到阿里云的内网下载地址，替换下载地址后下载很快，然后加上自动编译安装大概花了半小时左右完成。  下一步就是把项目代码上传到">
@@ -174,13 +174,20 @@
 </li>
 <li><p>下一步就是把项目代码上传到服务器，本来打算ftp上传，又觉得这种方式不利于代码管理和规范，决定在服务器上搭一个svn，然后把本地的代码<br>通过svn提交的服务器上去，使用了大概<a href="http://www.jianshu.com/p/4e3dd253a209" target="_blank" rel="external">这个教程</a>,具体哪个记不清楚了，<br>其实很多教程都不是很全面清晰，总之就是yum安装svn之后，创建仓库所在目录，用svn命令生成仓库，然后在仓库目录里面编辑配置文件来分配帐号<br>最后用svn co命令将代码复制到www目录下，改nginx配置文件，将项目目录指定到www下的对应目录，完成。</p>
 </li>
-<li><p>还有的教程提到可以创建一个脚本，当代码提交之后自动部署到对应目录，然而没看明白就没使用。</p>
+<li><p>设置代码提交后自动部署 ,用到的是svn的钩子，svn仓库下有一个hooks目录，里面是各种钩子的模板，用到的是post-commit这个，vim新建一个post-commit文件，内容大概如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">REPOS=<span class="string">"$1"</span></div><div class="line">REV=<span class="string">"$2"</span></div><div class="line">export LANG=zh_CN.UTF<span class="number">-8</span></div><div class="line">echo <span class="string">"Code Deployed at `date "</span>+%Y-%m-%d %<span class="string">H:</span>%M<span class="string">"`"</span> &gt;&gt; <span class="regexp">/home/</span>svn<span class="regexp">/dl_test/</span>hooks/deploy_log</div><div class="line"><span class="regexp">/usr/</span>local<span class="regexp">/subversion/</span>bin<span class="regexp">/svn update --username ****** --password ****** /</span>home<span class="regexp">/www/</span>data/dl_test</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>保存，然后<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x <span class="built_in">post</span>-commit</div></pre></td></tr></table></figure></p>
+<p>即可</p>
+<ul>
 <li><p>本地navicat连接数据库，导入数据。</p>
 </li>
 <li><p>最后关于dns解析，网上不少推荐<a href="https://www.dnspod.cn/" target="_blank" rel="external">dnspod</a>,在dnspod配置完后需要到注册域名的网站再去配置，dnspod网站有教程说明。</p>
 </li>
 <li><p>关于防火墙和开端口，按理说应该是iptables里面配置，但是我看服务器的配置文件有点不一样，而在阿里云的控制台上的安全策略可以配置，就在控制台配置了80、443以及svn的3690，<br>出于安全考虑没有直接开放mysql的3306，程序本身localhost可以访问，而开发机可以通过在navicat上ssh连接。</p>
+</li>
+<li><p>无脑设置项目目录文件权限：cd到项目目录，chmod -R 777 *</p>
 </li>
 </ul>
 
@@ -203,6 +210,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/06/16/es6-study/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          es6-study
+        
+      </div>
+    </a>
   
   
     <a href="/2016/09/26/event-loop/" id="article-nav-older" class="article-nav-link-wrap">
