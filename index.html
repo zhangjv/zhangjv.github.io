@@ -155,11 +155,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="es6-function"><a href="#es6-function" class="headerlink" title="es6-function"></a>es6-function</h1><ol>
+        <blockquote>
+<p>es6中关于function的更新和加强</p>
+</blockquote>
+<ol>
 <li>函数默认值。es5时期的函数默认值实现方式是<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">param = (<span class="keyword">typeof</span> param === <span class="string">'undefined'</span>) ? <span class="string">'defaultValue'</span> : param</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>现在可以理解为es帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以<br>基本类型，也可以是执行一个函数，<em>有传参就不会执行</em>），null不会</p>
+<p>现在可以理解为es6帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以是基本类型，也可以是执行一个函数，<em>有传参就不会执行</em>），null不会</p>
 <ol>
 <li><p>arguments 对象。在es5时期，严格模式与非严格模式下arguments对象存在差异：非严格下方法内改变参数值，对应arguments内数值也会改变，而严格模式不会变。函数默认值的情况，arguments对象表现是严格模式。实际上，我们应该始终使用严格模式，<br>所以结论就是：<strong>可以始终依据 arguments 对象来反映初始调用状态</strong>。</p>
 </li>
