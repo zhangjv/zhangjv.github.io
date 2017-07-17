@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/6 | zhangjv&#39;s blog</title>
+  <title>zhangjv&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="方法 函数默认值。es5时期的函数默认值实现方式是1param = (typeof param === &apos;undefined&apos;) ? &apos;defaultValue&apos; : param   现在可以理解为es帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以基本类型，也可以是执行一个函数，有传参就不会执行），null不会  arguments">
+<meta property="og:type" content="article">
 <meta property="og:title" content="zhangjv&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/17/hello-world/index.html">
 <meta property="og:site_name" content="zhangjv&#39;s blog">
+<meta property="og:description" content="方法 函数默认值。es5时期的函数默认值实现方式是1param = (typeof param === &apos;undefined&apos;) ? &apos;defaultValue&apos; : param   现在可以理解为es帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以基本类型，也可以是执行一个函数，有传参就不会执行），null不会  arguments">
+<meta property="og:updated_time" content="2017-07-17T10:16:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zhangjv&#39;s blog">
+<meta name="twitter:description" content="方法 函数默认值。es5时期的函数默认值实现方式是1param = (typeof param === &apos;undefined&apos;) ? &apos;defaultValue&apos; : param   现在可以理解为es帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以基本类型，也可以是执行一个函数，有传参就不会执行），null不会  arguments">
   
   
     <link rel="icon" href="http://wx2.sinaimg.cn/mw690/a1702bafly1ffywhbwe0gj20hs0hsmx9.jpg">
@@ -133,49 +137,165 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
+<li>函数默认值。es5时期的函数默认值实现方式是<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">param = (<span class="keyword">typeof</span> param === <span class="string">'undefined'</span>) ? <span class="string">'defaultValue'</span> : param</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>现在可以理解为es帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以<br>基本类型，也可以是执行一个函数，<em>有传参就不会执行</em>），null不会</p>
+<ol>
+<li><p>arguments 对象。在es5时期，严格模式与非严格模式下arguments对象存在差异：非严格下方法内改变参数值，对应arguments内数值也会改变，而严格模式不会变<br>。函数默认值的情况，arguments对象表现是严格模式。实际上，我们应该始终使用严格模式，<br>所以结论就是：<strong>可以始终依据 arguments 对象来反映初始调用状态</strong>。</p>
+</li>
+<li><p>剩余参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">param1,param2,...ortherParams</span>) </span>&#123;</div><div class="line">  <span class="comment">//code</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>保存除了前面指定的参数外，剩余所有，是一个数组，为了用起来方便。只能在参数的最后一位。（剩余参数本是为了取代arguments，然而现在它们共存）</p>
+<ol>
+<li><p>拓展运算符。与剩余参数有紧密联系（就是剩余参数的写法），把所有要传给函数的参数放到数组中，调用函数时foo(…paramArray)即可。</p>
+</li>
+<li><p>箭头函数。</p>
+</li>
+</ol>
+<ul>
+<li>基本语法<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">value =&gt; value</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>不写函数体的大括号，默认有return。当需要返回字面量对象时，对象外面包();</p>
+<p>多个参数、多行条件时：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(param1,param1) =&gt; &#123;</div><div class="line">    <span class="comment">//code</span></div><div class="line">    <span class="keyword">return</span> <span class="string">''</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>特性</li>
+</ul>
+<p>前提——js的function有两种用途：用来执行的普通方法；通过new来构造对象。</p>
+<p>大部分时候我们使用function是用作第一种用途，箭头函数就是专为第一种用途优化。</p>
+<p>箭头函数不能被用于new，没有Construct方法，没有prototype熟悉。重点是<strong>没有this绑定</strong>，<br>箭头函数内部this的规则是通过作用域链来查找，this=它外层的方法的this or undefined</p>
+<p><strong>因此也不能通过call apply bind 这类方法对this进行魔改</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/19/es6-function/" class="archive-article-date">
-  	<time datetime="2017-06-19T10:56:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/19/es6-function/">es6-function</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/17/hello-world/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/06/19/es6-function/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">es6-function</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="hello-world" data-title="" data-url="http://yoursite.com/2017/07/17/hello-world/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2017/07/17/hello-world/", 
+    sourceId: "hello-world",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -198,8 +318,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
