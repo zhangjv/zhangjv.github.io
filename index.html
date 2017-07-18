@@ -135,6 +135,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-s-tail-call" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/28/js-s-tail-call/">js&#39;s tail call</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/28/js-s-tail-call/" class="archive-article-date">
+  	<time datetime="2017-06-28T05:47:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>js函数的尾调用（tail call）</p>
+</blockquote>
+<p>尾调用，顾名思义在函数的末尾调用（另外一个函数）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//code...</span></div><div class="line">  bar()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在函数foo的执行末尾调用了bar，构成尾调用。js引擎对这种代码的处理方式新建一个栈帧推到调用栈中，结果就是这两个函数的环境都要存在于调用栈（call stack）占用空间（尽管外部函数环境的存在往往已没有意义），直到所有调用结束。过多这样的代码可能会导致调用栈太大出问题（堆栈溢出）。<br>这也是为什么递归这种方法性能低的原因：嵌套的很多层递归调用的函数所占调用栈内存会不断累加，直到递归完成。闭包同理。</p>
+<h3 id="在es6中（严格模式下）引擎对这种情况进行了优化"><a href="#在es6中（严格模式下）引擎对这种情况进行了优化" class="headerlink" title="在es6中（严格模式下）引擎对这种情况进行了优化"></a>在es6中（严格模式下）引擎对这种情况进行了优化</h3><p>即引擎尝试通过分析被尾调用的函数是否会访问或涉及到外层函数的环境，来确定是否需要新建栈帧或是优化会清除当前栈帧并再次利用（判断外层函数的环境没用了就直接干掉来达到节约栈空间的目的）。</p>
+<ul>
+<li>被尾调用的函数不能引用外层环境的变量（即不能构成闭包）</li>
+<li>被尾调用的函数与外层函数没有其他联系（如对执行结果进行运算或赋值等）</li>
+<li>被尾调用的函数的函数结果要作为外层函数的返回值（即需要return这个函数，只调用不行）</li>
+</ul>
+<p><strong>最佳实践</strong></p>
+<p>闭包这种就是我们想要的结果，没什么可优化。递归可以通过代码的调整来实现：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//common</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">recursion</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span></div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> n*recursion(n<span class="number">-1</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//better</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">recursion</span>(<span class="params">n,lastResult = <span class="number">1</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> n*lastResult</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">let</span> lastResultNow = n*lastResult</div><div class="line">        <span class="keyword">return</span> recursion(n<span class="number">-1</span>,lastResultNow)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/28/js-s-tail-call/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-es6-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -299,6 +370,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
