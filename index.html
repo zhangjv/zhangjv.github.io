@@ -158,18 +158,18 @@
         <blockquote>
 <p>es6中关于function的更新和加强</p>
 </blockquote>
-<ol>
+<ul>
 <li><p>函数默认值。es5时期的函数默认值实现方式是</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">param = (<span class="keyword">typeof</span> param === <span class="string">'undefined'</span>) ? <span class="string">'defaultValue'</span> : param</div></pre></td></tr></table></figure>
-<p> 现在可以理解为es6帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以是基本类型，也可以是执行一个函数，<em>有传参就不会执行</em>），null不会</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">param = (<span class="keyword">typeof</span> param === <span class="string">'undefined'</span>) ? <span class="string">'defaultValue'</span> : param</div></pre></td></tr></table></figure>
+<p>  现在可以理解为es6帮我们以函数默认值的方式实现了这一部分代码：不传参数，或者传undefined的时候会使用默认值（默认值不仅可以是基本类型，也可以是执行一个函数，<em>有传参就不会执行</em>），null不会。</p>
 </li>
-</ol>
-<ol>
-<li><p>arguments 对象。在es5时期，严格模式与非严格模式下arguments对象存在差异：非严格下方法内改变参数值，对应arguments内数值也会改变，而严格模式不会变。函数默认值的情况，arguments对象表现是严格模式。实际上，我们应该始终使用严格模式，<br> 所以结论就是：<strong>可以始终依据 arguments 对象来反映初始调用状态</strong>。</p>
+</ul>
+<ul>
+<li><p>arguments 对象。在es5时期，严格模式与非严格模式下arguments对象存在差异：非严格下方法内改变参数值，对应arguments内数值也会改变，而严格模式不会变。函数默认值的情况，arguments对象表现是严格模式。实际上，我们应该始终使用严格模式，<br>  所以结论就是：<strong>可以始终依据 arguments 对象来反映初始调用状态</strong>。</p>
 </li>
 <li><p>剩余参数。</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">param1,param2,...ortherParams</span>) </span>&#123;</div><div class="line">  <span class="comment">//code</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> 保存除了前面指定的参数外，剩余所有，是一个数组，为了用起来方便。只能在参数的最后一位。（剩余参数本是为了取代arguments，然而现在它们共存）</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">param1,param2,...ortherParams</span>) </span>&#123;</div><div class="line">  <span class="comment">//code</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  保存除了前面指定的参数外，剩余所有，是一个数组，为了用起来方便。只能在参数的最后一位。（剩余参数本是为了取代arguments，然而现在它们共存）</p>
 </li>
 <li><p>拓展运算符。与剩余参数有紧密联系（就是剩余参数的写法），把所有要传给函数的参数放到数组中，调用函数时foo(…paramArray)即可。</p>
 </li>
@@ -189,7 +189,7 @@
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 
       
 
